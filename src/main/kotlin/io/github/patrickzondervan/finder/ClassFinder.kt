@@ -25,10 +25,11 @@ object ClassFinder
         )
     }
 
-    inline fun <reified T : Any> classLoaderFilter(): ClassFilter?
+    inline fun <reified T : Any> classLoaderFilter(): ClassFilter
     {
-        return this.classLoader()
-            ?.withCurrentPackage<T>()
+        return this
+            .classLoader()
+            .withCurrentPackage<T>()
     }
 
     fun fromClassList(classes: List<Class<*>>): ClassFilter
