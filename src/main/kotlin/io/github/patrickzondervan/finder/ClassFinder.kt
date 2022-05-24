@@ -18,13 +18,8 @@ object ClassFinder
         return (classesField.get(classLoader) as Vector<Class<*>>).clone() as Vector<Class<*>>
     }
 
-    fun classLoader(): ClassFilter?
+    fun classLoader(): ClassFilter
     {
-        val loader = ClassLoader.getSystemClassLoader()
-        val input = loader.getResourceAsStream("") ?: return null
-
-        val reader = BufferedReader(InputStreamReader(input))
-
         return ClassFilter(
             getLoadedClasses()
         )
